@@ -11,13 +11,13 @@ def main():
 @app.route('/first/<int:num>')
 def first(num):
     result = str(20 + num)
-    return 'flask 에서 routing<br>20 + num: ' + result
+    return '20 + param = ' + result
 
 
 @app.route('/second/<num>')
 def second(num):
     result = "20" + num
-    return 'flask 에서 routing<br>20 + num: ' + result
+    return '"20" + param = ' + result
 
 
 @app.route('/login')

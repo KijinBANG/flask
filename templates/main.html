@@ -2,13 +2,55 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>샘플 </title>
+    <script src="{{url_for('static', filename='js/jquery.js')}}"></script>
+    <title>First FLASK PJ</title>
 </head>
 <body>
 <h1>Welcome!</h1>
 <h2>Study how to relate two web based projects.</h2>
 <h3>One is made by JAVA Framework, and the other is by Flask.</h3>
-<input type="button" onclick="location.href='http://127.0.0.1:5000/login'" value="LoginPage"/>
-<input type="button" onclick="location.href='http://127.0.0.1:5000/calendar'" value="FullCalendar"/>
+<div>
+    <input type="button" onclick="location.href='http://127.0.0.1:5000/login'" value="LoginPage" />
+</div>
+<div>
+    <input type="button" onclick="location.href='http://127.0.0.1:5000/calendar'" value="FullCalendar" />
+</div>
+<div>
+    <input type="button" class='paramIntBtn' onclick="#" value="SendIntParam" />
+</div>
+<div>
+    <input type="button" class='paramStrBtn' onclick="#" value="SendStrParam" />
+</div>
 </body>
+<script>
+//location.href='http://127.0.0.1:5000/calendar'
+
+$('.paramIntBtn').on('click', function() {
+    let val = prompt('Enter value:');
+    $.ajax({
+        url: 'http://127.0.0.1:5000/first/' + val,
+        type: "GET",
+        error: function (result) {
+            console.log("fail:\n", result)
+        },
+        success: function (result) {
+            console.log("result:\n" + result);
+        }
+    })
+});
+
+$('.paramStrBtn').on('click', function() {
+    let val = prompt('Enter value:');
+    $.ajax({
+        url: 'http://127.0.0.1:5000/second/' + val,
+        type: "GET",
+        error: function (result) {
+            console.log("fail:\n", result)
+        },
+        success: function (result) {
+            console.log("result:\n" + result);
+        }
+    })
+});
+</script>
 </html>
